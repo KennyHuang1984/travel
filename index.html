@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漫遊地圖 | 我的旅遊部落格</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .travel-hero {
+            background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-zoom {
+            overflow: hidden;
+        }
+
+        .card-zoom img {
+            transition: transform 0.5s ease;
+        }
+
+        .card-zoom:hover img {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav class="glass-nav fixed w-full z-50 top-0 left-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center space-x-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-teal-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30">
+                        <i class="fas fa-compass text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight text-slate-900">WANDER<span class="text-teal-600">LUST</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8 text-sm font-semibold text-slate-700">
+                        <a href="#" class="hover:text-teal-600 transition-colors py-2">首頁</a>
+                        <a href="#destinations" class="hover:text-teal-600 transition-colors py-2">熱門目的地</a>
+                        <a href="#articles" class="hover:text-teal-600 transition-colors py-2">精選遊記</a>
+                        <a href="#guides" class="hover:text-teal-600 transition-colors py-2">攻略指南</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-teal-500/20 transition-all duration-200">
+                        訂閱週報
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-slate-800 p-2"><i class="fas fa-bars text-xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 -->
+    <section class="travel-hero min-h-screen flex items-center justify-center text-center text-white px-4 relative pt-20">
+        <div class="max-w-4xl mx-auto z-10">
+            <span class="inline-block bg-teal-500/30 backdrop-blur-md text-teal-200 px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-teal-300/30">
+                <i class="fas fa-map-marker-alt mr-2"></i>探索世界的無限可能
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                收藏每一趟<br><span class="text-teal-400">震撼心靈</span>的旅程
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 font-light max-w-2xl mx-auto leading-relaxed">
+                跟著我們的足跡，走入未知的山海與古鎮，尋找最道地的文化風味與旅行靈感。
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#articles" class="w-full sm:w-auto bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-teal-500/30 transition-all">
+                    開始探索遊記
+                </a>
+                <a href="#destinations" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-full border border-white/30 transition-all">
+                    檢視目的地圖鑑
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 熱門目的地區塊 -->
+    <section id="destinations" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-teal-600 mb-2">Destinations</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">熱門探索主題</h3>
+            </div>
+            <p class="text-slate-500 text-sm mt-3 md:mt-0 max-w-md">從壯麗雪山到熱帶海島，點擊探索更多特色景點與隱藏版祕境。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 目的地 1 -->
+            <div class="card-zoom rounded-3xl relative h-96 shadow-lg group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="海島渡假" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span class="bg-teal-500/80 text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wider mb-2 inline-block backdrop-blur-sm">Island Beach</span>
+                    <h4 class="text-2xl font-bold mb-1">秘境海島假期</h4>
+                    <p class="text-slate-300 text-sm opacity-90">清澈水質與蔚藍海岸線</p>
+                </div>
+            </div>
+
+            <!-- 目的地 2 -->
+            <div class="card-zoom rounded-3xl relative h-96 shadow-lg group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="壯麗高山" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span class="bg-amber-500/80 text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wider mb-2 inline-block backdrop-blur-sm">Mountain Hike</span>
+                    <h4 class="text-2xl font-bold mb-1">高山縱走健行</h4>
+                    <p class="text-slate-300 text-sm opacity-90">挑戰自我與無邊際雲海</p>
+                </div>
+            </div>
+
+            <!-- 目的地 3 -->
+            <div class="card-zoom rounded-3xl relative h-96 shadow-lg group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="古城人文" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span class="bg-indigo-500/80 text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wider mb-2 inline-block backdrop-blur-sm">Historic City</span>
+                    <h4 class="text-2xl font-bold mb-1">千年歷史古城</h4>
+                    <p class="text-slate-300 text-sm opacity-90">漫步石板路與感受在地文化</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精選遊記區塊 -->
+    <section id="articles" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-teal-600 mb-2">Latest Posts</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">最新旅遊札記</h3>
+                <p class="text-slate-600">紀錄每一次真實的旅程、推薦私房景點與個人體驗。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 文章 1 -->
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="東京探索" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-800 text-xs font-bold px-3 py-1 rounded-full">
+                            日本 • 東京
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-slate-400 mb-2">2024 年 4 月 10 日 • 5 分鐘閱讀</div>
+                            <h4 class="text-xl font-bold text-slate-900 hover:text-teal-600 transition-colors mb-3 cursor-pointer">
+                                穿越現代與傳統：東京下町散策 7 天行程指南
+                            </h4>
+                            <p class="text-slate-600 text-sm line-clamp-3 mb-4 leading-relaxed">
+                                避開人擠人的熱門景點，帶你走進谷根千與淺草巷弄，品嚐老舖和菓子與古民家咖啡...
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
+                            <span class="flex items-center"><i class="far fa-user mr-2"></i> Alex</span>
+                            <span class="flex items-center"><i class="far fa-heart mr-1 text-rose-500"></i> 342</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章 2 -->
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="希臘小島" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-800 text-xs font-bold px-3 py-1 rounded-full">
+                            希臘 • 聖托里尼
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-slate-400 mb-2">2024 年 3 月 28 日 • 8 分鐘閱讀</div>
+                            <h4 class="text-xl font-bold text-slate-900 hover:text-teal-600 transition-colors mb-3 cursor-pointer">
+                                藍白色的夢幻國度：愛琴海小島自駕跳島小撇步
+                            </h4>
+                            <p class="text-slate-600 text-sm line-clamp-3 mb-4 leading-relaxed">
+                                從租車注意事項到最佳夕陽觀賞點，全面整理第一次前往希臘跳島必備的實用資訊...
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
+                            <span class="flex items-center"><i class="far fa-user mr-2"></i> Sarah</span>
+                            <span class="flex items-center"><i class="far fa-heart mr-1 text-rose-500"></i> 518</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章 3 -->
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="義大利五漁村" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-800 text-xs font-bold px-3 py-1 rounded-full">
+                            義大利 • 五漁村
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-slate-400 mb-2">2024 年 3 月 15 日 • 6 分鐘閱讀</div>
+                            <h4 class="text-xl font-bold text-slate-900 hover:text-teal-600 transition-colors mb-3 cursor-pointer">
+                                懸崖上的彩色童話：義大利五漁村徒步路線推薦
+                            </h4>
+                            <p class="text-slate-600 text-sm line-clamp-3 mb-4 leading-relaxed">
+                                沿著地中海海岸線行走，穿梭於彩色小屋與葡萄園之間，感受義式悠閒的慢活節奏...
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
+                            <span class="flex items-center"><i class="far fa-user mr-2"></i> Alex</span>
+                            <span class="flex items-center"><i class="far fa-heart mr-1 text-rose-500"></i> 410</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 電子報訂閱區塊 -->
+    <section class="py-20 bg-teal-900 text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <i class="fas fa-paper-plane text-4xl text-teal-400 mb-6"></i>
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">準備好開始您的下一次冒險了嗎？</h3>
+            <p class="text-teal-200 mb-8 max-w-xl mx-auto">訂閱我們的旅遊週報，每週免費獲取獨家私房景點、特價機票資訊與行程規劃範本。</p>
+            <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input type="email" placeholder="輸入您的 Email..." class="px-5 py-3.5 rounded-full text-slate-800 focus:outline-none w-full text-sm">
+                <button class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-8 py-3.5 rounded-full whitespace-nowrap transition-colors text-sm shadow-lg">
+                    免費訂閱
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <span class="text-2xl font-bold text-white tracking-tight">WANDER<span class="text-teal-500">LUST</span></span>
+                <p class="text-xs text-slate-500 mt-1">© 2026 My Travel Site. 保留所有權利。</p>
+            </div>
+            <div class="flex space-x-6 text-lg">
+                <a href="#" class="hover:text-teal-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-teal-400 transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-teal-400 transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-teal-400 transition-colors"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'bg-white/95');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-white/95');
+            }
+        });
+    </script>
+</body>
+</html>
